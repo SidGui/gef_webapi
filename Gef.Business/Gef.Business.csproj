@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Gef.Data\Gef.Data.csproj" />
+    <ProjectReference Include="..\Gef.Model\Gef.Model.csproj" />
+  </ItemGroup>
+
+</Project>
