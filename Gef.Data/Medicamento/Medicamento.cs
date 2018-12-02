@@ -4,39 +4,79 @@ using Gef.Model.Interface;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Data;
+using Dapper;
 
 namespace Gef.Data.Medicamento
 {
     public class Medicamento : Banco, Get<Model.Model.Medicamento>, Save<Model.Model.Medicamento>, Alter<Model.Model.Medicamento>, Delete
     {
-        public Medicamento()
-        {
-            
-        }
-
         public bool Alter(Model.Model.Medicamento item)
         {
-            throw new NotImplementedException();
+            using (IDbConnection conn = base.connect())
+            {
+                throw new NotImplementedException();
+            }
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            using (IDbConnection conn = base.connect())
+            {
+                throw new NotImplementedException();
+            }
         }
 
-        public Model.Model.Medicamento Get(int id)
+        public IEnumerable<Model.Model.Medicamento> Get(int id)
         {
-            throw new NotImplementedException();
+            using (IDbConnection conn = base.connect())
+            {
+                DynamicParameters bParams = new DynamicParameters();
+                bParams.Add(name: "idMedicamento", value: id, dbType: DbType.Int32);
+                return conn.Query<Model.Model.Medicamento
+                    , Model.Model.TipoMedicamento
+                    , Model.Model.PrincipioAtivo
+                    , Model.Model.Medicamento>(sql: "getMedicamento"
+                    , commandType: CommandType.StoredProcedure
+                    , param: bParams
+                    , splitOn: "id, id, id"
+                    , map: (medicamento, tipoMedicamento, principioAtivo) => {
+                        medicamento.tipoMedicamento = tipoMedicamento;
+                        medicamento.principioAtivo = principioAtivo;
+                        return medicamento;
+                    }
+                    );
+            }
         }
 
-        public Model.Model.Medicamento GetAll()
+        public IEnumerable<Model.Model.Medicamento> GetAll()
         {
-            throw new NotImplementedException();
+            using (IDbConnection conn = base.connect())
+            {
+                DynamicParameters bParams = new DynamicParameters();
+                bParams.Add(name: "idMedicamento", value: null, dbType: DbType.Int32); 
+                return conn.Query<Model.Model.Medicamento
+                    , Model.Model.TipoMedicamento
+                    , Model.Model.PrincipioAtivo
+                    , Model.Model.Medicamento>(sql: "getMedicamento"
+                    , commandType: CommandType.StoredProcedure
+                    , param: bParams
+                    , splitOn: "id, id, id"
+                    , map: (medicamento, tipoMedicamento, principioAtivo) => {
+                       medicamento.tipoMedicamento = tipoMedicamento;
+                        medicamento.principioAtivo = principioAtivo;
+                        return medicamento;
+                     }
+                    );
+            }
         }
 
         public bool Save(Model.Model.Medicamento item)
         {
-            throw new NotImplementedException();
+            using (IDbConnection conn = base.connect())
+            {
+                throw new NotImplementedException();
+            }
         }
     }
 }

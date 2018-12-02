@@ -6,7 +6,7 @@ namespace Gef.Model.Interface
 {
     public interface Get<T>
     {
-        T GetAll();
-        T Get(int id);
+        IEnumerable<T> GetAll();
+        IEnumerable<T> Get(int id);
     }
 }
