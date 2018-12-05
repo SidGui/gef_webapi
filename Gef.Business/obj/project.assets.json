@@ -1929,11 +1929,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\gui_p\\source\\repos\\Gef\\Gef.Business\\Gef.Business.csproj",
+      "projectUniqueName": "C:\\Users\\gui_p\\Documents\\gef_webapi\\Gef.Business\\Gef.Business.csproj",
       "projectName": "Gef.Business",
-      "projectPath": "C:\\Users\\gui_p\\source\\repos\\Gef\\Gef.Business\\Gef.Business.csproj",
+      "projectPath": "C:\\Users\\gui_p\\Documents\\gef_webapi\\Gef.Business\\Gef.Business.csproj",
       "packagesPath": "C:\\Users\\gui_p\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\gui_p\\source\\repos\\Gef\\Gef.Business\\obj\\",
+      "outputPath": "C:\\Users\\gui_p\\Documents\\gef_webapi\\Gef.Business\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -1952,11 +1952,11 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "C:\\Users\\gui_p\\source\\repos\\Gef\\Gef.Data\\Gef.Data.csproj": {
-              "projectPath": "C:\\Users\\gui_p\\source\\repos\\Gef\\Gef.Data\\Gef.Data.csproj"
+            "C:\\Users\\gui_p\\Documents\\gef_webapi\\Gef.Data\\Gef.Data.csproj": {
+              "projectPath": "C:\\Users\\gui_p\\Documents\\gef_webapi\\Gef.Data\\Gef.Data.csproj"
             },
-            "C:\\Users\\gui_p\\source\\repos\\Gef\\Gef.Model\\Gef.Model.csproj": {
-              "projectPath": "C:\\Users\\gui_p\\source\\repos\\Gef\\Gef.Model\\Gef.Model.csproj"
+            "C:\\Users\\gui_p\\Documents\\gef_webapi\\Gef.Model\\Gef.Model.csproj": {
+              "projectPath": "C:\\Users\\gui_p\\Documents\\gef_webapi\\Gef.Model\\Gef.Model.csproj"
             }
           }
         }

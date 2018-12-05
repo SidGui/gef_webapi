@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 using Gef.Model.Interface;
+using Gef.Model.Interface.Operation;
 
 namespace Gef.Business.Medicamento
 {
-    public class Medicamento : Get<Model.Model.Medicamento>, Alter<Model.Model.Medicamento>, Save<Model.Model.Medicamento>, Delete
+    public class Medicamento : IGet<Model.Model.Medicamento>, IAlter<Model.Model.Medicamento>, ISave<Model.Model.Medicamento>, IDelete
     {
         protected Data.Medicamento.Medicamento _medicamento = null;
 

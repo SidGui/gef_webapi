@@ -6,10 +6,11 @@ using System.Collections.Generic;
 using System.Text;
 using System.Data;
 using Dapper;
+using Gef.Model.Interface.Operation;
 
 namespace Gef.Data.Medicamento
 {
-    public class Medicamento : Banco, Get<Model.Model.Medicamento>, Save<Model.Model.Medicamento>, Alter<Model.Model.Medicamento>, Delete
+    public class Medicamento : Banco, IGet<Model.Model.Medicamento>, ISave<Model.Model.Medicamento>, IAlter<Model.Model.Medicamento>, IDelete
     {
         public bool Alter(Model.Model.Medicamento item)
         {
