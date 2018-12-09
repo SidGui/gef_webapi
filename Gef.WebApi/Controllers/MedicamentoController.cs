@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace Gef.WebApi.Controllers
 {
@@ -11,17 +12,45 @@ namespace Gef.WebApi.Controllers
     [ApiController]
     public class MedicamentoController : ControllerBase
     {
-
+        private Business.Medicamento.Medicamento _medicamento = null;
         [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        public ActionResult<string> Get()
         {
-            return new string[] { "value1", "value2" };
+            try
+            {
+                _medicamento = new Business.Medicamento.Medicamento();
+                string json = JsonConvert.SerializeObject(_medicamento.GetAll());
+                return json;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                _medicamento = null;
+            }
+            
         }
 
         [HttpGet("{id}")]
-        public ActionResult<IEnumerable<string>> Get(int id)
+        public ActionResult<string> Get(int id)
         {
-            return new string[] { "value1", "value2" };
+            try
+            {
+                _medicamento = new Business.Medicamento.Medicamento();
+                string json = JsonConvert.SerializeObject(_medicamento.Get(id));
+                return json;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                _medicamento = null;
+            }
+            
         }
 
         [HttpPost]

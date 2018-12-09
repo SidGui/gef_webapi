@@ -2,32 +2,60 @@
 using System.Collections.Generic;
 using System.Text;
 using Gef.Model.Interface;
+using Gef.Model.Interface.Operation;
 
 namespace Gef.Business.Medicamento
 {
-    public class Medicamento : Get<Medicamento>, Alter<Medicamento>, Save<Medicamento>, Delete
+    public class Medicamento : IGet<Model.Model.Medicamento>, IAlter<Model.Model.Medicamento>, ISave<Model.Model.Medicamento>, IDelete
     {
+        protected Data.Medicamento.Medicamento _medicamento = null;
+
         public void Delete(int id)
         {
             throw new NotImplementedException();
         }
 
-        public Medicamento Get(int id)
+        public IEnumerable<Model.Model.Medicamento> Get(int id)
+        {
+            try
+            {
+                _medicamento = new Data.Medicamento.Medicamento();
+                return _medicamento.Get(id);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                _medicamento = null;
+            }
+        }
+
+        public IEnumerable<Model.Model.Medicamento> GetAll()
+        {
+            try
+            {
+                _medicamento = new Data.Medicamento.Medicamento();
+                return _medicamento.GetAll();
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                _medicamento = null;
+            }
+            
+        }
+
+        public bool Save(Model.Model.Medicamento item)
         {
             throw new NotImplementedException();
         }
 
-        public Medicamento GetAll()
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool Save(Medicamento item)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool Alter(Medicamento item)
+        public bool Alter(Model.Model.Medicamento item)
         {
             throw new NotImplementedException();
         }
