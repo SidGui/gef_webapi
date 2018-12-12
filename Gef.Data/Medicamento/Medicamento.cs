@@ -14,9 +14,19 @@ namespace Gef.Data.Medicamento
     {
         public bool Alter(Model.Model.Medicamento item)
         {
-            using (IDbConnection conn = base.connect())
+             using (IDbConnection conn = base.connect())
             {
-                throw new NotImplementedException();
+                DynamicParameters bParams = new DynamicParameters();
+                bParams.Add(name: "", value: item.ativo, dbType: DbType.Boolean); 
+                bParams.Add(name: "", value: item.cadastroCompleto, dbType: DbType.Boolean); 
+                bParams.Add(name: "", value: item.nomeAnvisa, dbType: DbType.String);
+                bParams.Add(name: "", value: item.nomeMedicamento, dbType: DbType.String);
+                bParams.Add(name: "", value: item.observacao, dbType: DbType.String);
+                bParams.Add(name: "", value: item.quantidadeEstoqueCritico, dbType: DbType.Double);
+
+                conn.Execute(sql: "alterMedicamento", param: bParams, commandType: CommandType.StoredProcedure);
+
+                return false;
             }
         }
 
@@ -24,8 +34,13 @@ namespace Gef.Data.Medicamento
         {
             using (IDbConnection conn = base.connect())
             {
-                throw new NotImplementedException();
+                DynamicParameters bParams = new DynamicParameters();
+                bParams.Add(name: "idMedicamento", value: id, dbType: DbType.Boolean); 
+
+                conn.Execute(sql: "deleteMedicamento", param: bParams, commandType: CommandType.StoredProcedure);
+
             }
+
         }
 
         public IEnumerable<Model.Model.Medicamento> Get(int id)
@@ -76,7 +91,20 @@ namespace Gef.Data.Medicamento
         {
             using (IDbConnection conn = base.connect())
             {
-                throw new NotImplementedException();
+                DynamicParameters bParams = new DynamicParameters();
+                bParams.Add(name: "", value: item.ativo, dbType: DbType.Boolean); 
+                bParams.Add(name: "", value: item.cadastroCompleto, dbType: DbType.Boolean); 
+                bParams.Add(name: "", value: item.dataCadastro, dbType: DbType.DateTime); 
+                bParams.Add(name: "", value: item.nomeAnvisa, dbType: DbType.String);
+                bParams.Add(name: "", value: item.nomeMedicamento, dbType: DbType.String);
+                bParams.Add(name: "", value: item.observacao, dbType: DbType.String);
+                bParams.Add(name: "", value: item.principioAtivo.id, dbType: DbType.Int32);
+                bParams.Add(name: "", value: item.quantidadeEstoqueCritico, dbType: DbType.Double);
+                bParams.Add(name: "", value: item.tipoMedicamento.id, dbType: DbType.Int32);
+
+                conn.Execute(sql: "getMedicamento", param: bParams, commandType: CommandType.StoredProcedure);
+
+                return false;
             }
         }
     }
