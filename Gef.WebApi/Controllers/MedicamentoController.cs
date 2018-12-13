@@ -20,7 +20,7 @@ namespace Gef.WebApi.Controllers
             {
                 _medicamento = new Business.Medicamento.Medicamento();
                 string json = JsonConvert.SerializeObject(_medicamento.GetAll());
-                return json;
+                return Ok(json);
             }
             catch (Exception ex)
             {
@@ -40,7 +40,7 @@ namespace Gef.WebApi.Controllers
             {
                 _medicamento = new Business.Medicamento.Medicamento();
                 string json = JsonConvert.SerializeObject(_medicamento.Get(id));
-                return json;
+                return Ok(json);
             }
             catch (Exception ex)
             {
@@ -54,15 +54,41 @@ namespace Gef.WebApi.Controllers
         }
 
         [HttpPost]
-        public ActionResult<HttpContext> Post([FromBody] object medicamento)
+        public ActionResult<HttpContext> Post([FromBody] Model.Model.Medicamento medicamento)
         {
-            return null;
+           try
+            {
+                _medicamento = new Business.Medicamento.Medicamento();
+                string json = JsonConvert.SerializeObject(_medicamento.Save(medicamento));
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                _medicamento = null;
+            }
         }
 
-        [HttpPut]
-        public ActionResult<IEnumerable<string>> Put([FromBody] object medicamento)
+        [HttpPut("{id}")]
+        public ActionResult<IEnumerable<string>> Put(int id, [FromBody] Model.Model.Medicamento medicamento)
         {
-            return new string[] { "value1", "value2" };
+             try
+            {
+                _medicamento = new Business.Medicamento.Medicamento();
+                string json = JsonConvert.SerializeObject(_medicamento.Alter(medicamento));
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                _medicamento = null;
+            }
         }
 
     }

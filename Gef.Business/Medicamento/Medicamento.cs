@@ -52,12 +52,39 @@ namespace Gef.Business.Medicamento
 
         public bool Save(Model.Model.Medicamento item)
         {
-            throw new NotImplementedException();
+             try
+            {
+                _medicamento = new Data.Medicamento.Medicamento();
+                _medicamento.Save(item);
+                return false;
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                _medicamento = null;
+            }
+            
         }
 
         public bool Alter(Model.Model.Medicamento item)
         {
-            throw new NotImplementedException();
+            try
+            {
+                _medicamento = new Data.Medicamento.Medicamento();
+                _medicamento.Alter(item);
+                return false;
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                _medicamento = null;
+            }
         }
     }
 }
