@@ -20,7 +20,7 @@ namespace Gef.WebApi.Controllers
             {
                 _medicamento = new Business.Medicamento.Medicamento();
                 string json = JsonConvert.SerializeObject(_medicamento.GetAll());
-                return json;
+                return Ok(json);
             }
             catch (Exception ex)
             {
@@ -40,7 +40,7 @@ namespace Gef.WebApi.Controllers
             {
                 _medicamento = new Business.Medicamento.Medicamento();
                 string json = JsonConvert.SerializeObject(_medicamento.Get(id));
-                return json;
+                return Ok(json);
             }
             catch (Exception ex)
             {
@@ -72,8 +72,8 @@ namespace Gef.WebApi.Controllers
             }
         }
 
-        [HttpPut]
-        public ActionResult<IEnumerable<string>> Put([FromBody] Model.Model.Medicamento medicamento)
+        [HttpPut("{id}")]
+        public ActionResult<IEnumerable<string>> Put(int id, [FromBody] Model.Model.Medicamento medicamento)
         {
              try
             {

@@ -17,16 +17,17 @@ namespace Gef.Data.Medicamento
              using (IDbConnection conn = base.connect())
             {
                 DynamicParameters bParams = new DynamicParameters();
-                bParams.Add(name: "", value: item.ativo, dbType: DbType.Boolean); 
-                bParams.Add(name: "", value: item.cadastroCompleto, dbType: DbType.Boolean); 
-                bParams.Add(name: "", value: item.nomeAnvisa, dbType: DbType.String);
-                bParams.Add(name: "", value: item.nomeMedicamento, dbType: DbType.String);
-                bParams.Add(name: "", value: item.observacao, dbType: DbType.String);
-                bParams.Add(name: "", value: item.quantidadeEstoqueCritico, dbType: DbType.Double);
+                bParams.Add(name: "ativo", value: item.ativo, dbType: DbType.Boolean);
+                bParams.Add(name: "idMedicamento", value: item.id, dbType: DbType.Boolean);
+                //bParams.Add(name: "", value: item.cadastroCompleto, dbType: DbType.Boolean); 
+                //bParams.Add(name: "", value: item.nomeAnvisa, dbType: DbType.String);
+                bParams.Add(name: "nomeMedicamento", value: item.nomeMedicamento, dbType: DbType.String);
+                //bParams.Add(name: "", value: item.observacao, dbType: DbType.String);
+                bParams.Add(name: "estoqueCritico", value: item.quantidadeEstoqueCritico, dbType: DbType.Double);
 
                 conn.Execute(sql: "alterMedicamento", param: bParams, commandType: CommandType.StoredProcedure);
 
-                return false;
+                return true;
             }
         }
 
@@ -92,19 +93,20 @@ namespace Gef.Data.Medicamento
             using (IDbConnection conn = base.connect())
             {
                 DynamicParameters bParams = new DynamicParameters();
-                bParams.Add(name: "", value: item.ativo, dbType: DbType.Boolean); 
-                bParams.Add(name: "", value: item.cadastroCompleto, dbType: DbType.Boolean); 
-                bParams.Add(name: "", value: item.dataCadastro, dbType: DbType.DateTime); 
-                bParams.Add(name: "", value: item.nomeAnvisa, dbType: DbType.String);
-                bParams.Add(name: "", value: item.nomeMedicamento, dbType: DbType.String);
-                bParams.Add(name: "", value: item.observacao, dbType: DbType.String);
-                bParams.Add(name: "", value: item.principioAtivo.id, dbType: DbType.Int32);
-                bParams.Add(name: "", value: item.quantidadeEstoqueCritico, dbType: DbType.Double);
-                bParams.Add(name: "", value: item.tipoMedicamento.id, dbType: DbType.Int32);
+                bParams.Add(name: "ativo", value: item.ativo, dbType: DbType.Boolean); 
+                bParams.Add(name: "cadastroCompleto", value: item.cadastroCompleto, dbType: DbType.Boolean); 
+                bParams.Add(name: "dataCadastro", value: item.dataCadastro, dbType: DbType.DateTime); 
+                bParams.Add(name: "nomeAnvisa", value: item.nomeAnvisa, dbType: DbType.String);
+                bParams.Add(name: "nomeMedicamento", value: item.nomeMedicamento, dbType: DbType.String);
+                bParams.Add(name: "observacao", value: item.observacao, dbType: DbType.String);
+                bParams.Add(name: "principioAtivo", value: item.principioAtivo.nome, dbType: DbType.Int32);
+                bParams.Add(name: "idPrincipioAtivo", value: item.principioAtivo.id, dbType: DbType.Int32);
+                bParams.Add(name: "estoqueCritico", value: item.quantidadeEstoqueCritico, dbType: DbType.Double);
+                bParams.Add(name: "idTipoMedicamento", value: item.tipoMedicamento.id, dbType: DbType.Int32);
 
-                conn.Execute(sql: "getMedicamento", param: bParams, commandType: CommandType.StoredProcedure);
+                conn.Execute(sql: "setMedicamento", param: bParams, commandType: CommandType.StoredProcedure);
 
-                return false;
+                return true;
             }
         }
     }
