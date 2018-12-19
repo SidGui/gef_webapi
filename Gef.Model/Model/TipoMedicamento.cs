@@ -6,8 +6,8 @@ namespace Gef.Model.Model
 {
     public class TipoMedicamento
     {
-        public int id { get; set; }
-        public string nome { get; set; }
+        public int idTipoMedicamento { get; set; }
+        public string nomeTipoMedicamento { get; set; }
         public bool ativo { get; set; }
     }
 }

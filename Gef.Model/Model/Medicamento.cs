@@ -16,6 +16,7 @@ namespace Gef.Model.Model
         public double quantidadeEstoqueCritico { get; set; }
         public string nomeAnvisa { get; set; }
         public PrincipioAtivo principioAtivo { get; set; }
-
+        public ViaAdministracao viaAdministracao { get; set; }
+        public UnidadeMedida unidadeMedida { get; set; }
     }
 }
