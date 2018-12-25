@@ -6,7 +6,7 @@ namespace Gef.Model.Model
 {
     public class PrincipioAtivo
     {
-        public int id { get; set; }
-        public string nome { get; set; }
+        public int idPrincipioAtivo { get; set; }
+        public string nomePrincipioAtivo { get; set; }
     }
 }

@@ -53,13 +53,17 @@ namespace Gef.Data.Medicamento
                 return conn.Query<Model.Model.Medicamento
                     , Model.Model.TipoMedicamento
                     , Model.Model.PrincipioAtivo
+                    , Model.Model.UnidadeMedida
+                    , Model.Model.ViaAdministracao
                     , Model.Model.Medicamento>(sql: "getMedicamento"
                     , commandType: CommandType.StoredProcedure
                     , param: bParams
-                    , splitOn: "id, id, id"
-                    , map: (medicamento, tipoMedicamento, principioAtivo) => {
+                    , splitOn: "id, idTipoMedicamento, idPrincipioAtivo, idUnidadeMedida, idViaAdministracao"
+                   , map: (medicamento, tipoMedicamento, principioAtivo, unidadeMedida, viaAdministracao) => {
                         medicamento.tipoMedicamento = tipoMedicamento;
                         medicamento.principioAtivo = principioAtivo;
+                          medicamento.unidadeMedida = unidadeMedida;
+                        medicamento.viaAdministracao = viaAdministracao;
                         return medicamento;
                     }
                     );
@@ -73,18 +77,22 @@ namespace Gef.Data.Medicamento
                 DynamicParameters bParams = new DynamicParameters();
                 bParams.Add(name: "idMedicamento", value: null, dbType: DbType.Int32); 
                 return conn.Query<Model.Model.Medicamento
-                    , Model.Model.TipoMedicamento
-                    , Model.Model.PrincipioAtivo
-                    , Model.Model.Medicamento>(sql: "getMedicamento"
-                    , commandType: CommandType.StoredProcedure
-                    , param: bParams
-                    , splitOn: "id, id, id"
-                    , map: (medicamento, tipoMedicamento, principioAtivo) => {
-                       medicamento.tipoMedicamento = tipoMedicamento;
-                        medicamento.principioAtivo = principioAtivo;
-                        return medicamento;
-                     }
-                    );
+                      , Model.Model.TipoMedicamento
+                      , Model.Model.PrincipioAtivo
+                      , Model.Model.UnidadeMedida
+                      , Model.Model.ViaAdministracao
+                      , Model.Model.Medicamento>(sql: "getMedicamento"
+                      , commandType: CommandType.StoredProcedure
+                      , param: bParams
+                      , splitOn: "id, idTipoMedicamento, idPrincipioAtivo, idUnidadeMedida, idViaAdministracao"
+                      , map: (medicamento, tipoMedicamento, principioAtivo, unidadeMedida, viaAdministracao) => {
+                          medicamento.tipoMedicamento = tipoMedicamento;
+                          medicamento.principioAtivo = principioAtivo;
+                          medicamento.unidadeMedida = unidadeMedida;
+                          medicamento.viaAdministracao = viaAdministracao;
+                          return medicamento;
+                      }
+                      );
             }
         }
 
@@ -93,16 +101,17 @@ namespace Gef.Data.Medicamento
             using (IDbConnection conn = base.connect())
             {
                 DynamicParameters bParams = new DynamicParameters();
-                bParams.Add(name: "ativo", value: item.ativo, dbType: DbType.Boolean); 
-                bParams.Add(name: "cadastroCompleto", value: item.cadastroCompleto, dbType: DbType.Boolean); 
-                bParams.Add(name: "dataCadastro", value: item.dataCadastro, dbType: DbType.DateTime); 
-                bParams.Add(name: "nomeAnvisa", value: item.nomeAnvisa, dbType: DbType.String);
                 bParams.Add(name: "nomeMedicamento", value: item.nomeMedicamento, dbType: DbType.String);
+                bParams.Add(name: "idTipoMedicamento", value: item.tipoMedicamento.idTipoMedicamento, dbType: DbType.Int32);
+                bParams.Add(name: "dataCadastro", value: item.dataCadastro, dbType: DbType.DateTime); 
                 bParams.Add(name: "observacao", value: item.observacao, dbType: DbType.String);
-                bParams.Add(name: "principioAtivo", value: item.principioAtivo.nome, dbType: DbType.Int32);
-                bParams.Add(name: "idPrincipioAtivo", value: item.principioAtivo.id, dbType: DbType.Int32);
+                bParams.Add(name: "cadastroCompleto", value: item.cadastroCompleto, dbType: DbType.Boolean); 
+                bParams.Add(name: "ativo", value: item.ativo, dbType: DbType.Boolean); 
                 bParams.Add(name: "estoqueCritico", value: item.quantidadeEstoqueCritico, dbType: DbType.Double);
-                bParams.Add(name: "idTipoMedicamento", value: item.tipoMedicamento.id, dbType: DbType.Int32);
+                bParams.Add(name: "nomeAnvisa", value: item.nomeAnvisa, dbType: DbType.String);
+                bParams.Add(name: "idPrincipioAtivo", value: item.principioAtivo.idPrincipioAtivo, dbType: DbType.Int32);
+                bParams.Add(name: "idUnidadeMedida", value: item.unidadeMedida.idUnidadeMedida, dbType: DbType.Int32);
+                bParams.Add(name: "idViaAdministracao", value: item.viaAdministracao.idViaAdministracao, dbType: DbType.Int32);
 
                 conn.Execute(sql: "setMedicamento", param: bParams, commandType: CommandType.StoredProcedure);
 

@@ -2757,6 +2757,19 @@
           }
         }
       },
+      "MySqlClient/5.4.2": {
+        "type": "package",
+        "dependencies": {
+          "MySqlConnector": "0.30.0",
+          "Savage.Data": "5.4.2"
+        },
+        "compile": {
+          "lib/netstandard2.0/Savage.Data.MySqlClient.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Savage.Data.MySqlClient.dll": {}
+        }
+      },
       "MySqlConnector/0.47.1": {
         "type": "package",
         "compile": {
@@ -2813,6 +2826,15 @@
         },
         "runtime": {
           "lib/netstandard1.6/NuGet.Frameworks.dll": {}
+        }
+      },
+      "OptimizedDataReader/1.1.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/OptimizedDataReader.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/OptimizedDataReader.dll": {}
         }
       },
       "Remotion.Linq/2.2.0": {
@@ -3041,6 +3063,18 @@
             "assetType": "native",
             "rid": "win-x86"
           }
+        }
+      },
+      "Savage.Data/5.4.2": {
+        "type": "package",
+        "dependencies": {
+          "OptimizedDataReader": "1.1.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Savage.Data.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Savage.Data.dll": {}
         }
       },
       "System.AppContext/4.3.0": {
@@ -4662,6 +4696,7 @@
         "dependencies": {
           "Dapper": "1.50.5",
           "Gef.Model": "1.0.0",
+          "MySqlClient": "5.4.2",
           "MySqlConnector": "0.47.1"
         },
         "compile": {
@@ -7639,6 +7674,20 @@
         "version.txt"
       ]
     },
+    "MySqlClient/5.4.2": {
+      "sha512": "Bya19KGJ2vQ1ul9h3pzBPUd2fKYU6NY2cvb7z4XLg/YK23a97J0fUJxXwGwQrGakY7qKKGwTRixYh1lWXCTtaw==",
+      "type": "package",
+      "path": "mysqlclient/5.4.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net45/Savage.Data.MySqlClient.dll",
+        "lib/net46/Savage.Data.MySqlClient.dll",
+        "lib/netstandard2.0/Savage.Data.MySqlClient.dll",
+        "mysqlclient.5.4.2.nupkg.sha512",
+        "mysqlclient.nuspec"
+      ]
+    },
     "MySqlConnector/0.47.1": {
       "sha512": "bwEjq0yLcf6SKCS64/kjql8RC/mFP9n7tGVqqShMW2QgoBJr9tflEWy8S0jupMk4oMPqjqjooMQqqwzZROwPug==",
       "type": "package",
@@ -7852,6 +7901,20 @@
         "lib/netstandard1.6/NuGet.Frameworks.xml",
         "nuget.frameworks.4.7.0.nupkg.sha512",
         "nuget.frameworks.nuspec"
+      ]
+    },
+    "OptimizedDataReader/1.1.0": {
+      "sha512": "rxAs+njRuYRI6PUHBXtxdmXveJfu1DXtVCCb7wyl8xtkIx8/BCChfnkBi3py/e0OhEDYhZThIomKbdw4R4UjJA==",
+      "type": "package",
+      "path": "optimizeddatareader/1.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net45/OptimizedDataReader.dll",
+        "lib/net46/OptimizedDataReader.dll",
+        "lib/netstandard2.0/OptimizedDataReader.dll",
+        "optimizeddatareader.1.1.0.nupkg.sha512",
+        "optimizeddatareader.nuspec"
       ]
     },
     "Remotion.Linq/2.2.0": {
@@ -8140,6 +8203,20 @@
         "runtimes/win-x86/native/sni.dll",
         "useSharedDesignerContext.txt",
         "version.txt"
+      ]
+    },
+    "Savage.Data/5.4.2": {
+      "sha512": "+BLcosRayryC7RO+bahEyAQ9xylO4R7czORgD8pxft+D5niUZQ6Am2bOvA3DqvPXbO9DZDL2C9AQpGhizWia6w==",
+      "type": "package",
+      "path": "savage.data/5.4.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net45/Savage.Data.dll",
+        "lib/net46/Savage.Data.dll",
+        "lib/netstandard2.0/Savage.Data.dll",
+        "savage.data.5.4.2.nupkg.sha512",
+        "savage.data.nuspec"
       ]
     },
     "System.AppContext/4.3.0": {
@@ -12702,40 +12779,38 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\gui_p\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "/home/guilhermesantos/.nuget/packages/": {},
+    "/usr/share/dotnet/sdk/NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\gui_p\\source\\repos\\Gef\\Gef.WebApi\\Gef.WebApi.csproj",
+      "projectUniqueName": "/home/guilhermesantos/Pessoal/net/tcc/gef_webapi/Gef.WebApi/Gef.WebApi.csproj",
       "projectName": "Gef.WebApi",
-      "projectPath": "C:\\Users\\gui_p\\source\\repos\\Gef\\Gef.WebApi\\Gef.WebApi.csproj",
-      "packagesPath": "C:\\Users\\gui_p\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\gui_p\\source\\repos\\Gef\\Gef.WebApi\\obj\\",
+      "projectPath": "/home/guilhermesantos/Pessoal/net/tcc/gef_webapi/Gef.WebApi/Gef.WebApi.csproj",
+      "packagesPath": "/home/guilhermesantos/.nuget/packages/",
+      "outputPath": "/home/guilhermesantos/Pessoal/net/tcc/gef_webapi/Gef.WebApi/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        "/usr/share/dotnet/sdk/NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\gui_p\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/home/guilhermesantos/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.1"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "C:\\Users\\gui_p\\source\\repos\\Gef\\Gef.Business\\Gef.Business.csproj": {
-              "projectPath": "C:\\Users\\gui_p\\source\\repos\\Gef\\Gef.Business\\Gef.Business.csproj"
+            "/home/guilhermesantos/Pessoal/net/tcc/gef_webapi/Gef.Business/Gef.Business.csproj": {
+              "projectPath": "/home/guilhermesantos/Pessoal/net/tcc/gef_webapi/Gef.Business/Gef.Business.csproj"
             },
-            "C:\\Users\\gui_p\\source\\repos\\Gef\\Gef.Model\\Gef.Model.csproj": {
-              "projectPath": "C:\\Users\\gui_p\\source\\repos\\Gef\\Gef.Model\\Gef.Model.csproj"
+            "/home/guilhermesantos/Pessoal/net/tcc/gef_webapi/Gef.Model/Gef.Model.csproj": {
+              "projectPath": "/home/guilhermesantos/Pessoal/net/tcc/gef_webapi/Gef.Model/Gef.Model.csproj"
             }
           }
         }
