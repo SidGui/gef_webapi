@@ -10,9 +10,21 @@ namespace Gef.Business.Estoque
     public class Estoque : IGet<Model.Model.Estoque>, IAlter<Model.Model.Estoque>, ISave<Model.Model.Estoque>, IDelete
     {
         private Data.Estoque.Estoque _estoque = null;
-        public bool Alter(Model.Model.Estoque item)
+        public bool Alter(int id, Model.Model.Estoque item)
         {
-            throw new NotImplementedException();
+            try {
+                _estoque = new Data.Estoque.Estoque();
+                _estoque.Alter(id, item);
+                return true;
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                _estoque = null;
+            }
         }
 
         public void Delete(int id)
@@ -56,7 +68,18 @@ namespace Gef.Business.Estoque
 
         public bool Save(Model.Model.Estoque item)
         {
-            throw new NotImplementedException();
+            try { 
+                _estoque = new Data.Estoque.Estoque();
+                _estoque.Save(item);
+                return true;
+            }
+            catch(Exception ex) {
+                throw ex;
+            }
+            finally{ 
+                _estoque = null;   
+            }
+
         }
     }
 }

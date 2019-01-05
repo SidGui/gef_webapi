@@ -6,6 +6,6 @@ namespace Gef.Model.Interface.Operation
 {
     public interface IAlter<T>
     {
-        bool Alter(T item);
+        bool Alter(int id, T item);
     }
 }

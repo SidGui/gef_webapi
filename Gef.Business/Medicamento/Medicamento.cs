@@ -69,12 +69,12 @@ namespace Gef.Business.Medicamento
             
         }
 
-        public bool Alter(Model.Model.Medicamento item)
+        public bool Alter(int id, Model.Model.Medicamento item)
         {
             try
             {
                 _medicamento = new Data.Medicamento.Medicamento();
-                _medicamento.Alter(item);
+                _medicamento.Alter(id, item);
                 return false;
             }
             catch(Exception ex)

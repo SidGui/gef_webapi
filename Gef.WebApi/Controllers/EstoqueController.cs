@@ -47,11 +47,49 @@ namespace Gef.WebApi.Controllers
             {
                 throw ex;
             }
+            finally {
+                _estoque = null;
+            }
+
+        }
+
+        public ActionResult<string> Post([FromBody] Model.Model.Estoque estoque)
+        {
+            try {
+                if(estoque == null || estoque.medicamento.id == 0)
+                    return BadRequest("ENTER WITH A VALID ESTOQUE.");
+                
+                _estoque = new Business.Estoque.Estoque();
+                string json = JsonConvert.SerializeObject(_estoque.Save(estoque));
+                return Ok();
+            }
+            catch(Exception ex){
+                throw ex;
+            }
+            finally {
+                _estoque = null;
+            }
+        }
+
+          [HttpPut("{id}")]
+        public ActionResult<IEnumerable<string>> Put(int id, [FromBody] Model.Model.Estoque estoque)
+        {
+            try {
+                if(id == 0)
+                    return BadRequest("ENTER WITH A VALID ID.");
+
+                _estoque = new Business.Estoque.Estoque();
+                string json = JsonConvert.SerializeObject(_estoque.Alter(id, estoque));
+                return Ok("DATA CHANGED SUCCESSFUL");
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
             finally
             {
                 _estoque = null;
             }
-
         }
     }
 }

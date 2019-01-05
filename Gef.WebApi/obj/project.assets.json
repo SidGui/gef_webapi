@@ -16,6 +16,19 @@
           "lib/netstandard2.0/Dapper.dll": {}
         }
       },
+      "JsonPatch/1.0.2": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNet.WebApi.Client": "5.2.0",
+          "Newtonsoft.Json": "6.0.5"
+        },
+        "compile": {
+          "lib/net45/JsonPatch.dll": {}
+        },
+        "runtime": {
+          "lib/net45/JsonPatch.dll": {}
+        }
+      },
       "Microsoft.AspNet.WebApi.Client/5.2.6": {
         "type": "package",
         "dependencies": {
@@ -4734,6 +4747,18 @@
         "lib/netstandard1.3/Dapper.xml",
         "lib/netstandard2.0/Dapper.dll",
         "lib/netstandard2.0/Dapper.xml"
+      ]
+    },
+    "JsonPatch/1.0.2": {
+      "sha512": "1kkuDylYCZgYRO4mNAu1px3u1no+ARzDOc9hACNneFm5LR3XOZ8fKEdEzHkRCu/0aHucwhACEUnD1yIIRrGaEg==",
+      "type": "package",
+      "path": "jsonpatch/1.0.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "jsonpatch.1.0.2.nupkg.sha512",
+        "jsonpatch.nuspec",
+        "lib/net45/JsonPatch.dll"
       ]
     },
     "Microsoft.AspNet.WebApi.Client/5.2.6": {
@@ -12770,6 +12795,7 @@
     ".NETCoreApp,Version=v2.1": [
       "Gef.Business >= 1.0.0",
       "Gef.Model >= 1.0.0",
+      "JsonPatch >= 1.0.2",
       "Microsoft.AspNetCore.App >= 2.1.1",
       "Microsoft.AspNetCore.Razor.Design >= 2.1.2",
       "Microsoft.NETCore.App >= 2.1.0",
@@ -12824,6 +12850,10 @@
     "frameworks": {
       "netcoreapp2.1": {
         "dependencies": {
+          "JsonPatch": {
+            "target": "Package",
+            "version": "[1.0.2, )"
+          },
           "Microsoft.AspNetCore.App": {
             "suppressParent": "All",
             "target": "Package",
@@ -12860,5 +12890,17 @@
         "warn": true
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'JsonPatch 1.0.2' was restored using '.NETFramework,Version=v4.6.1' instead of the project target framework '.NETCoreApp,Version=v2.1'. This package may not be fully compatible with your project.",
+      "libraryId": "JsonPatch",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v2.1"
+      ]
+    }
+  ]
 }

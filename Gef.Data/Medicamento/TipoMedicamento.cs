@@ -12,7 +12,7 @@ namespace Gef.Data.Medicamento
 {
     public class TipoMedicamento : Banco, IGet<Model.Model.TipoMedicamento>, ISave<Model.Model.TipoMedicamento>, IAlter<Model.Model.TipoMedicamento>, IDelete
     {
-        public bool Alter(Model.Model.TipoMedicamento item)
+        public bool Alter(int id, Model.Model.TipoMedicamento item)
         {
              using (IDbConnection conn = base.connect())
             {

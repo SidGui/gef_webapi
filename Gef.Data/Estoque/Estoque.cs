@@ -11,9 +11,26 @@ namespace Gef.Data.Estoque
 {
     public class Estoque : Banco, IGet<Model.Model.Estoque>, ISave<Model.Model.Estoque>, IAlter<Model.Model.Estoque>, IDelete
     {
-        public bool Alter(Model.Model.Estoque item)
+        public bool Alter(int id, Model.Model.Estoque item)
         {
-            throw new NotImplementedException();
+           try {
+                // using (IDbConnection conn = base.connect()) {
+                //     DynamicParameters bParams = new DynamicParameters();
+                //     bParams.Add(name: "ativo", value: item.ativo, dbType: DbType.Boolean);
+                //     bParams.Add(name: "idMedicamento", value: id, dbType: DbType.Int32);
+                //     bParams.Add(name: "cadastroCompleto", value: item.cadastroCompleto, dbType: DbType.Boolean);
+                //     //bParams.Add(name: "", value: item.cadastroCompleto, dbType: DbType.Boolean); 
+                //     bParams.Add(name: "nomeMedicamento", value: item.nomeMedicamento, dbType: DbType.String);
+                //     bParams.Add(name: "estoqueCritico", value: item.quantidadeEstoqueCritico, dbType: DbType.Double);
+
+                //     conn.Execute(sql: "alterMedicamento", param: bParams, commandType: CommandType.StoredProcedure);
+
+                    return true;
+                //}
+            }
+            catch(MySql.Data.MySqlClient.MySqlException ex){
+                throw ex;
+            }
         }
 
         public void Delete(int id)
@@ -32,7 +49,7 @@ namespace Gef.Data.Estoque
                     , Model.Model.Estoque>(sql: "getEstoque"
                     , commandType: CommandType.StoredProcedure
                     , param: bParams
-                    , splitOn: "id, id"
+                    , splitOn: "idEstoque, id"
                     , map: (estoque, medicamento) => {
                         estoque.medicamento = medicamento;
                         return estoque;
@@ -52,7 +69,7 @@ namespace Gef.Data.Estoque
                     , Model.Model.Estoque>(sql: "getEstoque"
                     , commandType: CommandType.StoredProcedure
                     , param: bParams
-                    , splitOn: "id, id"
+                    , splitOn: "idEstoque, id"
                     , map: (estoque, medicamento) => {
                         estoque.medicamento = medicamento;
                         return estoque;
@@ -63,7 +80,25 @@ namespace Gef.Data.Estoque
 
         public bool Save(Model.Model.Estoque item)
         {
-            throw new NotImplementedException();
+            try{
+                using (IDbConnection conn = base.connect()) {
+                    DynamicParameters bParams = new DynamicParameters();
+                    bParams.Add(name: "idMedicamento", value: item.medicamento.id, dbType: DbType.Int32);
+                    bParams.Add(name: "quantidade", value: item.quantidadeEstoque, dbType: DbType.Int32);
+                    bParams.Add(name: "vencimento", value: item.vencimento, dbType: DbType.DateTime);
+                    conn.Execute(sql: "setEstoque"
+                        , commandType: CommandType.StoredProcedure
+                        , param: bParams
+                    );
+                }
+                return true;
+            }
+            catch(MySql.Data.MySqlClient.MySqlException ex) {
+                throw ex;
+            }
+            finally {
+                var a  = "oi";
+            }
         }
     }
 }
