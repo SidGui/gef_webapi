@@ -64,6 +64,7 @@ namespace Gef.WebApi.Controllers
                 return Ok();
             }
             catch(Exception ex){
+                return BadRequest(ex.Message);
                 throw ex;
             }
             finally {

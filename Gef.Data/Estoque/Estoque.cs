@@ -14,6 +14,11 @@ namespace Gef.Data.Estoque
         public bool Alter(int id, Model.Model.Estoque item)
         {
            try {
+            //    using (IDbConnection conn = base.connect()) {
+            //             DynamicParameters bParams = new DynamicParameters();
+            //          bParams.Add(name: "ativo", value: item., dbType: DbType.Boolean);
+            //          bParams.Add(name: "idMedicamento", value: id, dbType: DbType.Int32);
+            //    }
                 // using (IDbConnection conn = base.connect()) {
                 //     DynamicParameters bParams = new DynamicParameters();
                 //     bParams.Add(name: "ativo", value: item.ativo, dbType: DbType.Boolean);
@@ -86,6 +91,7 @@ namespace Gef.Data.Estoque
                     bParams.Add(name: "idMedicamento", value: item.medicamento.id, dbType: DbType.Int32);
                     bParams.Add(name: "quantidade", value: item.quantidadeEstoque, dbType: DbType.Int32);
                     bParams.Add(name: "vencimento", value: item.vencimento, dbType: DbType.DateTime);
+                    bParams.Add(name: "procedencia", value: item.procedencia, dbType: DbType.String);
                     conn.Execute(sql: "setEstoque"
                         , commandType: CommandType.StoredProcedure
                         , param: bParams

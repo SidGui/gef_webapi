@@ -6,6 +6,7 @@ namespace Gef.Model.Model
 {
     public class Medicamento
     {
+        public string guid {get;set;}
         public int id { get; set; }
         public string nomeMedicamento { get; set; }
         public TipoMedicamento tipoMedicamento { get; set; }
@@ -16,7 +17,7 @@ namespace Gef.Model.Model
         public double quantidadeEstoqueCritico { get; set; }
         public string nomeAnvisa { get; set; }
         public PrincipioAtivo principioAtivo { get; set; }
- public ViaAdministracao viaAdministracao { get; set; }
+        public ViaAdministracao viaAdministracao { get; set; }
         public UnidadeMedida unidadeMedida { get; set; }
     }
 }

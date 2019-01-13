@@ -70,6 +70,8 @@ namespace Gef.Business.Estoque
         {
             try { 
                 _estoque = new Data.Estoque.Estoque();
+                if(item.quantidadeEstoque == 0)
+                    throw new Exception("QUANTIDADE DEVE SER MAIOR QUE 0");
                 _estoque.Save(item);
                 return true;
             }

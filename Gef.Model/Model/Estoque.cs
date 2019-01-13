@@ -10,6 +10,7 @@ namespace Gef.Model.Model
         public Medicamento medicamento { get; set; }
         public int quantidadeEstoque { get; set; }
         public DateTime vencimento { get; set; }
+        public string procedencia {get;set;}
 
     }
 }
