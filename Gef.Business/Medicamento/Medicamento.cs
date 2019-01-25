@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using Gef.Model.Interface;
 using Gef.Model.Interface.Operation;
@@ -13,6 +14,24 @@ namespace Gef.Business.Medicamento
         public void Delete(int id)
         {
             throw new NotImplementedException();
+        }
+
+        public IEnumerable<bool> Get(string nomeMedicamento)
+        {
+            try
+            {
+                _medicamento = new Data.Medicamento.Medicamento();
+                IEnumerable<Model.Model.Medicamento> item = _medicamento.GetAll();
+                return item.Select(s => s.nomeAnvisa.ToLower().Contains(nomeMedicamento));
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                _medicamento = null;
+            }
         }
 
         public IEnumerable<Model.Model.Medicamento> Get(int id)

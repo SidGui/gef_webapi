@@ -38,6 +38,11 @@ namespace Gef.Data.Medicamento
             }
         }
 
+        public IEnumerable<bool> Get(string nome)
+        {
+            throw new NotImplementedException();
+        }
+
         public IEnumerable<Model.Model.TipoMedicamento> GetAll()
         {
             using (IDbConnection conn = base.connect())

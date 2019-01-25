@@ -10,7 +10,7 @@ using Gef.Model.Interface.Operation;
 
 namespace Gef.Data.Medicamento
 {
-    public class PrincipioAtivo : Banco, IGet<Model.Model.PrincipioAtivo>
+    public class PrincipioAtivo : Banco, IGet<Model.Model.PrincipioAtivo>, ISave<Model.Model.PrincipioAtivo>
     {
         public IEnumerable<Model.Model.PrincipioAtivo> Get(int id)
         {
@@ -18,6 +18,11 @@ namespace Gef.Data.Medicamento
             {
                 throw new NotImplementedException("");
             }
+        }
+
+        public IEnumerable<bool> Get(string nome)
+        {
+            throw new NotImplementedException();
         }
 
         public IEnumerable<Model.Model.PrincipioAtivo> GetAll()
@@ -28,6 +33,26 @@ namespace Gef.Data.Medicamento
                     (sql: "getPrincipioAtivo"
                       , commandType: CommandType.StoredProcedure
                     );
+            }
+        }
+
+        public bool Save(Model.Model.PrincipioAtivo item)
+        {
+            try
+            {
+                using (IDbConnection conn = base.connect())
+                {
+                    DynamicParameters bParams = new DynamicParameters();
+                    bParams.Add(name: "nomePrincipioAtivo", value: item.nomePrincipioAtivo, dbType: DbType.String);
+
+                    conn.Execute(sql: "setPrincipioAtivo", param: bParams, commandType: CommandType.StoredProcedure);
+
+                    return true;
+                }
+            }
+            catch (MySql.Data.MySqlClient.MySqlException ex)
+            {
+                throw ex;
             }
         }
     }

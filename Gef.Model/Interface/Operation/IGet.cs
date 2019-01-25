@@ -8,5 +8,6 @@ namespace Gef.Model.Interface.Operation
     {
         IEnumerable<T> GetAll();
         IEnumerable<T> Get(int id);
+        IEnumerable<bool> Get(string nome);
     }
 }

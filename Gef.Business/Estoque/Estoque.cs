@@ -49,6 +49,11 @@ namespace Gef.Business.Estoque
             }
         }
 
+        public IEnumerable<bool> Get(string nome)
+        {
+            throw new NotImplementedException();
+        }
+
         public IEnumerable<Model.Model.Estoque> GetAll()
         {
             try

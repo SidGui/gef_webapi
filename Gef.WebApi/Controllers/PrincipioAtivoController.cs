@@ -33,5 +33,23 @@ namespace Gef.WebApi.Controllers
             }
 
         }
+
+        public ActionResult<string> Post([FromBody] Model.Model.PrincipioAtivo principioAtivo)
+        {
+            try
+            {
+                _principioAtivo = new Business.Medicamento.PrincipioAtivo();
+                string json = JsonConvert.SerializeObject(_principioAtivo.Save(principioAtivo));
+                return json;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                _principioAtivo = null;
+            }
+        }
     }
 }

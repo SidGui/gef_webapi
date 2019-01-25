@@ -33,5 +33,24 @@ namespace Gef.WebApi.Controllers
             }
 
         }
+        [HttpPost]
+        public ActionResult<string> Post([FromBody] Model.Model.ViaAdministracao viaAdministracao)
+        {
+            try
+            {
+                _viaAdministracao = new Business.Medicamento.ViaAdministracao();
+                string json = JsonConvert.SerializeObject(_viaAdministracao.Save(viaAdministracao));
+                return json;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                _viaAdministracao = null;
+            }
+
+        }
     }
 }

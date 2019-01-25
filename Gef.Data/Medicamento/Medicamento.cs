@@ -18,12 +18,18 @@ namespace Gef.Data.Medicamento
             try {
                 using (IDbConnection conn = base.connect()) {
                     DynamicParameters bParams = new DynamicParameters();
-                    bParams.Add(name: "ativo", value: item.ativo, dbType: DbType.Boolean);
-                    bParams.Add(name: "idMedicamento", value: id, dbType: DbType.Int32);
-                    bParams.Add(name: "cadastroCompleto", value: item.cadastroCompleto, dbType: DbType.Boolean);
-                    //bParams.Add(name: "", value: item.cadastroCompleto, dbType: DbType.Boolean); 
+
+                    bParams.Add(name: "idMedicamento", value: item.id, dbType: DbType.Int32);
+                    bParams.Add(name: "idTipoMedicamento", value: item.tipoMedicamento.idTipoMedicamento, dbType: DbType.Int32);
                     bParams.Add(name: "nomeMedicamento", value: item.nomeMedicamento, dbType: DbType.String);
+                    bParams.Add(name: "observacao", value: item.observacao, dbType: DbType.String);
+                 //   bParams.Add(name: "cadastroCompleto", value: item.cadastroCompleto, dbType: DbType.Boolean);
+                    bParams.Add(name: "ativo", value: item.ativo, dbType: DbType.Boolean);
                     bParams.Add(name: "estoqueCritico", value: item.quantidadeEstoqueCritico, dbType: DbType.Double);
+                    bParams.Add(name: "nomeAnvisa", value: item.nomeAnvisa, dbType: DbType.String);
+                    bParams.Add(name: "idPrincipioAtivo", value: item.principioAtivo.idPrincipioAtivo, dbType: DbType.Int32);
+                    bParams.Add(name: "idUnidadeMedida", value: item.unidadeMedida.idUnidadeMedida, dbType: DbType.Int32);
+                    bParams.Add(name: "idViaAdministracao", value: item.viaAdministracao.idViaAdministracao, dbType: DbType.Int32);
 
                     conn.Execute(sql: "alterMedicamento", param: bParams, commandType: CommandType.StoredProcedure);
 
@@ -77,42 +83,48 @@ namespace Gef.Data.Medicamento
                     );
             }
         }
-// public IEnumerable<Model.Model.Medicamento> GetAll(){
-    
-//     IEnumerable<Model.Model.Medicamento> medicamento = Enumerable.Empty<Model.Model.Medicamento>();
-//     try{
-//         using (MySql.Data.MySqlClient.MySqlConnection conn = new MySql.Data.MySqlClient.MySqlConnection("Server=gef-app-mysqldbserver.mysql.database.azure.com;Database=gef_db;Uid=gefadmin@gef-app-mysqldbserver;Pwd=Fib1235813@;")) 
-//         {
-//                     conn.Open();
-//                     MySql.Data.MySqlClient.MySqlCommand myCommand = new MySql.Data.MySqlClient.MySqlCommand();
-//                     myCommand.CommandText = "getMedicamento";
-//                     myCommand.Connection = conn;
-//                     myCommand.CommandType = CommandType.StoredProcedure;
-//                     MySql.Data.MySqlClient.MySqlParameter param = new MySql.Data.MySqlClient.MySqlParameter();
-//                     param.DbType =DbType.Int32;
-//                     param.ParameterName = "idMedicamento";
-//                     param.Value = null;
-//                     myCommand.Parameters.Add(param);
-//                     MySql.Data.MySqlClient.MySqlDataReader dr = myCommand.ExecuteReader();
-//                     List<Model.Model.Medicamento> lmedicamento = new List<Model.Model.Medicamento>();
-//                     if(dr.HasRows)
-//                     while(dr.Read()){
-//                         Model.Model.Medicamento mMedicamento = new Model.Model.Medicamento();
-//                         mMedicamento.data_cadastro = dr.GetDateTime("data_cadastro");
-//                         // lmedicamento.Add( new Model.Model.Medicamento{
-//                         //     nomeMedicamento = dr.GetString("nomeMedicamento"),
-//                         //     nomeAnvisa = dr.GetString("nomeAnvisa"),
-//                         //  observacao = dr.GetString("observacao"),
-//                         //  data_cadastro = dr.GetDateTime("data_cadastro")
-//                         // });
-//                     }
-//                     conn.Close();
-//         }
-//     }catch(MySql.Data.MySqlClient.MySqlException ex) {
-//         //throw ex;
-//     }
-//     return medicamento;
-// }
+
+        public IEnumerable<bool> Get(string nome)
+        {
+            throw new NotImplementedException();
+        }
+
+        // public IEnumerable<Model.Model.Medicamento> GetAll(){
+
+        //     IEnumerable<Model.Model.Medicamento> medicamento = Enumerable.Empty<Model.Model.Medicamento>();
+        //     try{
+        //         using (MySql.Data.MySqlClient.MySqlConnection conn = new MySql.Data.MySqlClient.MySqlConnection("Server=gef-app-mysqldbserver.mysql.database.azure.com;Database=gef_db;Uid=gefadmin@gef-app-mysqldbserver;Pwd=Fib1235813@;")) 
+        //         {
+        //                     conn.Open();
+        //                     MySql.Data.MySqlClient.MySqlCommand myCommand = new MySql.Data.MySqlClient.MySqlCommand();
+        //                     myCommand.CommandText = "getMedicamento";
+        //                     myCommand.Connection = conn;
+        //                     myCommand.CommandType = CommandType.StoredProcedure;
+        //                     MySql.Data.MySqlClient.MySqlParameter param = new MySql.Data.MySqlClient.MySqlParameter();
+        //                     param.DbType =DbType.Int32;
+        //                     param.ParameterName = "idMedicamento";
+        //                     param.Value = null;
+        //                     myCommand.Parameters.Add(param);
+        //                     MySql.Data.MySqlClient.MySqlDataReader dr = myCommand.ExecuteReader();
+        //                     List<Model.Model.Medicamento> lmedicamento = new List<Model.Model.Medicamento>();
+        //                     if(dr.HasRows)
+        //                     while(dr.Read()){
+        //                         Model.Model.Medicamento mMedicamento = new Model.Model.Medicamento();
+        //                         mMedicamento.data_cadastro = dr.GetDateTime("data_cadastro");
+        //                         // lmedicamento.Add( new Model.Model.Medicamento{
+        //                         //     nomeMedicamento = dr.GetString("nomeMedicamento"),
+        //                         //     nomeAnvisa = dr.GetString("nomeAnvisa"),
+        //                         //  observacao = dr.GetString("observacao"),
+        //                         //  data_cadastro = dr.GetDateTime("data_cadastro")
+        //                         // });
+        //                     }
+        //                     conn.Close();
+        //         }
+        //     }catch(MySql.Data.MySqlClient.MySqlException ex) {
+        //         //throw ex;
+        //     }
+        //     return medicamento;
+        // }
         public IEnumerable<Model.Model.Medicamento> GetAll()
         {
             try {

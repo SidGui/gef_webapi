@@ -63,6 +63,11 @@ namespace Gef.Data.Estoque
             }
         }
 
+        public IEnumerable<bool> Get(string nome)
+        {
+            throw new NotImplementedException();
+        }
+
         public IEnumerable<Model.Model.Estoque> GetAll()
         {
             using (IDbConnection conn = base.connect())

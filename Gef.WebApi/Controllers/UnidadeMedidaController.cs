@@ -33,5 +33,41 @@ namespace Gef.WebApi.Controllers
             }
 
         }
+
+        [HttpPost]
+        public ActionResult<bool> Post([FromBody] Model.Model.UnidadeMedida unidadeMedida)
+        {
+            try
+            {
+                _unidadeMedida = new Business.Estoque.UnidadeMedida();
+               string json = JsonConvert.SerializeObject(_unidadeMedida.Save(unidadeMedida));
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+
+            }
+        }
+        //public Task<ActionResult<bool>> Post([FromBody] Model.Model.UnidadeMedida unidadeMedida)
+        //{
+        //    try
+        //    {
+        //        _unidadeMedida = new Business.Estoque.UnidadeMedida();
+        //        Task<string> json = JsonConvert.SerializeObject(_unidadeMedida.Save());
+        //        return ;
+        //    }
+        //    catch(Exception ex)
+        //    {
+        //        throw ex;
+        //    }
+        //    finally
+        //    {
+
+        //    }
+        //}
     }
 }

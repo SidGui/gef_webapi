@@ -31,7 +31,26 @@ namespace Gef.WebApi.Controllers
             {
                 _medicamento = null;
             }
-            
+
+        }
+        [HttpGet("like/{nomeMedicamento}")]
+        public ActionResult<string> Get(string nomeMedicamento)
+        {
+            try
+            {
+                _medicamento = new Business.Medicamento.Medicamento();
+                var a = _medicamento.Get(nomeMedicamento).Count(c => c == true);
+                string json = JsonConvert.SerializeObject(a > 0 ? true : false);
+                return Ok(json);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                _medicamento = null;
+            }
         }
 
         [HttpGet("{id}")]
@@ -51,15 +70,15 @@ namespace Gef.WebApi.Controllers
             {
                 _medicamento = null;
             }
-            
+
         }
 
         [HttpPost]
         public ActionResult<HttpContext> Post([FromBody] Model.Model.Medicamento medicamento)
         {
-           try
+            try
             {
-                if(medicamento == null || string.IsNullOrEmpty(medicamento.nomeMedicamento))
+                if (medicamento == null || string.IsNullOrEmpty(medicamento.nomeMedicamento))
                     return BadRequest("ENTER WITH A VALID MEDICAMENTO.");
 
                 _medicamento = new Business.Medicamento.Medicamento();
@@ -79,8 +98,9 @@ namespace Gef.WebApi.Controllers
         [HttpPut("{id}")]
         public ActionResult<IEnumerable<string>> Put(int id, [FromBody] Model.Model.Medicamento medicamento)
         {
-            try {
-                if(id == 0)
+            try
+            {
+                if (id == 0)
                     return BadRequest("ENTER WITH A VALID ID.");
 
                 _medicamento = new Business.Medicamento.Medicamento();
