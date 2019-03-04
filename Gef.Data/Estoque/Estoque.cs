@@ -51,12 +51,20 @@ namespace Gef.Data.Estoque
                 bParams.Add(name: "idMedicamento", value: id, dbType: DbType.Int32);
                 return conn.Query<Model.Model.Estoque
                     , Model.Model.Medicamento
+                    , Model.Model.TipoMedicamento
+                    , Model.Model.PrincipioAtivo
+                    , Model.Model.UnidadeMedida
+                    , Model.Model.ViaAdministracao
                     , Model.Model.Estoque>(sql: "getEstoque"
                     , commandType: CommandType.StoredProcedure
                     , param: bParams
-                    , splitOn: "idEstoque, id"
-                    , map: (estoque, medicamento) => {
+                    , splitOn: "idEstoque, id, idTipoMedicamento,idPrincipioAtivo ,idUnidadeMedida, idViaAdministracao"
+                    , map: (estoque, medicamento, tipoMedicamento, principioAtivo, unidadeMedida, viaAdministracao) => {
                         estoque.medicamento = medicamento;
+                        estoque.medicamento.tipoMedicamento = tipoMedicamento;
+                        estoque.medicamento.principioAtivo = principioAtivo;
+                        estoque.medicamento.unidadeMedida = unidadeMedida;
+                        estoque.medicamento.viaAdministracao = viaAdministracao;
                         return estoque;
                     }
                     );
@@ -76,12 +84,20 @@ namespace Gef.Data.Estoque
                 bParams.Add(name: "idMedicamento", value: null, dbType: DbType.Int32);
                 return conn.Query<Model.Model.Estoque
                     , Model.Model.Medicamento
+                    , Model.Model.TipoMedicamento
+                    , Model.Model.PrincipioAtivo
+                    , Model.Model.UnidadeMedida
+                    , Model.Model.ViaAdministracao
                     , Model.Model.Estoque>(sql: "getEstoque"
                     , commandType: CommandType.StoredProcedure
                     , param: bParams
-                    , splitOn: "idEstoque, id"
-                    , map: (estoque, medicamento) => {
+                    , splitOn: "idEstoque, id, idTipoMedicamento,idPrincipioAtivo ,idUnidadeMedida, idViaAdministracao"
+                    , map: (estoque, medicamento, tipoMedicamento, principioAtivo, unidadeMedida, viaAdministracao) => {
                         estoque.medicamento = medicamento;
+                        estoque.medicamento.tipoMedicamento = tipoMedicamento;
+                        estoque.medicamento.principioAtivo = principioAtivo;
+                        estoque.medicamento.unidadeMedida = unidadeMedida;
+                        estoque.medicamento.viaAdministracao = viaAdministracao;
                         return estoque;
                     }
                     );
